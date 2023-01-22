@@ -18,7 +18,7 @@ class Authorization():
 
         if not line:
             return None
-        username, password = line.split(",")
+        username, password = line.split("<||>")
         return username == usern and password == __hashpass
 
     def register(self):
@@ -28,7 +28,7 @@ class Authorization():
         __hashpass = self.hash(__passw)
 
         with open("./usr_cred.txt", "w") as f:
-            f.writelines(f"{usern},{__hashpass}")
+            f.writelines(f"{usern}<||>{__hashpass}")
 
     def hash(self, passw):
         return "".join(chr(ord(_)+10) for _ in passw)
