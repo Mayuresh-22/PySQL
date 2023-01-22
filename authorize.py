@@ -23,7 +23,7 @@ class Authorization():
 
     def register(self):
         print(f"\n{' ':<10}----REGISTER----\n")
-        usern = input(f"{' ':<10}USERNAME: ")
+        usern = input(f"{' ':<4}USERNAME: ")
         __passw = getpass.getpass(prompt=f"{' ':<4}PASSWORD: ").strip()
         __hashpass = self.hash(__passw)
 

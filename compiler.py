@@ -10,7 +10,8 @@ class PySQL():
         mes = obj.login()
 
         if mes is None or mes is False:
-            sys.exit(f"{' ':<2}Login failed...")
+            print(f"{' ':<2}Login failed...\n")
+            obj.register()
         else:
             print(f"\n{' ':<2}Successfully Logged In...\n")
             self.queries()
@@ -25,8 +26,7 @@ class PySQL():
                 query_lis = query.split()
                 if f"{query_lis[0]} {query_lis[1]}" in ddl:
                     self.operate(query)
-                else:
-                    self.parse(query)
+
             except KeyboardInterrupt:
                 print("\n")
                 break
