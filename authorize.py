@@ -1,5 +1,6 @@
 """
 LOGIN/REGISTRATION
+This script is used to Login/register any user.
 """
 import getpass
 
@@ -18,9 +19,7 @@ class Authorization():
         if not line:
             return None
         username, password = line.split(",")
-        if username == usern and password == __hashpass:
-            return True
-        return False
+        return username == usern and password == __hashpass
 
     def register(self):
         print(f"\n{' ':<10}----REGISTER----\n")
@@ -29,10 +28,7 @@ class Authorization():
         __hashpass = self.hash(__passw)
 
         with open("./usr_cred.txt", "w") as f:
-            f.writelines(usern+","+__hashpass)
+            f.writelines(f"{usern},{__hashpass}")
 
     def hash(self, passw):
-        __hashpass = ""
-        for _ in passw:
-            __hashpass += chr(ord(_)+10)
-        return __hashpass
+        return "".join(chr(ord(_)+10) for _ in passw)
